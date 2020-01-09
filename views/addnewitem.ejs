@@ -1,0 +1,84 @@
+<%- include ("partials/header") %>
+<header class="jumbotron">
+    <h1>
+        Admin Page
+    </h1>
+    <p>
+        Add, Update, Delete Products.
+    </p>
+</header>
+
+<script type="text/javascript">
+function OnSubmitForm()
+{
+  if(document.myform.tf[0].checked == true)
+  {
+    document.myform.action ="/toys";
+  }
+  else
+  if(document.myform.tf[1].checked == true)
+  {
+    document.myform.action ="/foods";
+  }
+  return true;
+}
+</script>
+<center>
+    <h3>Add New Product</h3>
+<form name="myform"   method="POST" onsubmit="return OnSubmitForm();">
+    
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <input  type="radio" name="tf" value="Toy" checked="checked">Toy<br>
+            </div>
+            <div class="col-md-6 text-left">
+                <input  type="radio" name="tf" value="Food">Food<br>
+            </div>   
+        </div>
+    <div class="form-group">
+        <label>Name:</label>
+        <input style="width:30%" type="text" name="itemname" placeholder="Name">
+    </div>            
+    <div class="form-group">
+        <label>Image:</label> 
+        <input style="width:30%"  type="text" name="imgurl" placeholder="Image Url">
+    </div>
+    <div class="form-group">
+        <label>Price:</label>
+        <input style="width:30%" min=0 type="number" name="price" placeholder="Price (₹)">
+    </div>
+    <div class="form-group">
+        <label>Stock:</label>
+        <input style="width:30%" min=0 type="number" name="stock" value=0 placeholder="Stock">
+    </div>
+    <input class="btn btn-md btn-success" type="submit">
+
+</form>
+</center>
+
+<div class="row">
+    <div class="col-md-12"><h3 class="mt-5">Update/Delete Items</h3></div>
+    <% allProducts.forEach(function(item){  %>
+        <div class="col-md-3 col-sm-6 card">
+  
+
+                    
+                    <img src=<%=item.image%> class="card-img-top img-fluid" style="height:250px" >
+                    <div class="card-body">
+                        <center>
+                            <div class="card-title"><h4><%=item.name%></h4> </div>
+                            <div class="card-text"><h6><%=item.price%> ₹</h6></div>
+                            <div class="card-text"><h6>Left: <%=item.stock%></h6></div>
+                            <a class="btn btn-warning stretched-link" href="/<%=item._id%>/edit">Update</a>
+                            <form action="/<%=item.id%>?_method=delete" method="POST">
+                                <button class="btn btn-danger mt-2" style="z-index:1;position: relative;">Delete</button>
+                            </form>                          
+                        </center>
+                    </div>  
+                        
+
+        </div>
+   
+<% }); %>
+</div>
+<%- include ("partials/footer") %>

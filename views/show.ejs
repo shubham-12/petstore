@@ -1,0 +1,20 @@
+<%- include ("partials/header") %>
+
+<center>
+    <div class="card" style="width:35%;">
+    <div class="card-title"><h1><%=prod.name%></h1></div>
+    <img src="<%=prod.image%>" class="card-img-top" >
+    <div class="card-body">
+        <div class="card-text">
+            <h4><%=prod.price%> ₹</h4>
+            <h6>Left: <%=prod.stock%></h6>
+            <a class="btn btn-info" href="#">Add to Cart</a>
+        </div>
+    </div>
+    
+    </div>
+</center>
+
+
+
+<%- include ("partials/footer") %>

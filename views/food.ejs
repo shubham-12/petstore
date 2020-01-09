@@ -1,0 +1,32 @@
+<%- include ("partials/header") %>
+<header class="jumbotron">
+    <h1>
+        Food
+    </h1>
+    <p>
+        Healthy and tasty food for your best friend.
+    </p>
+  
+</header>
+<div class="row">
+    <% foods.forEach(function(item){  %>
+        <div class="col-md-3 col-sm-6 card">
+  
+
+                    
+                    <img src=<%=item.image%> class="card-img-top img-fluid" style="height:250px" >
+                    <div class="card-body">
+                        <center>
+                            <div class="card-title"><h4><%=item.name%></h4> </div>
+                            <div class="card-text"><h6><%=item.price%> ₹</h6></div>
+                            <a class="btn btn-primary stretched-link" href="/product/<%=item._id%>">View</a>
+                        </center>
+                    </div>  
+                        
+
+        </div>
+   
+<% }); %>
+</div>
+
+<%- include ("partials/footer") %>

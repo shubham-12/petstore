@@ -1,0 +1,30 @@
+<%- include ("partials/header") %>
+<header class="jumbotron">
+    <h1>
+        Toys
+    </h1>
+    <p>
+        Best Quality Toys for your precious pet.
+    </p>
+    
+</header>
+<div class="row">
+<% toys.forEach(function(item){  %>
+    <div class="col-md-3 col-sm-6 card">
+        <img class=" card-img-top img-fluid img-thumbnail" style="height:250px" src=<%=item.image%> >
+        <div class="card-body">
+            <center>
+                <div class="card-title"><h4><%=item.name%></h4></div>
+                <div class="card-text"><h6><%=item.price%> ₹</h6></div>
+                <a class="btn btn-primary stretched-link" href="/product/<%=item._id%>">View</a>
+            </center>
+        </div>
+        
+        
+        
+    </div>
+        
+    <% }); %>
+</div>
+
+<%- include ("partials/footer") %>
